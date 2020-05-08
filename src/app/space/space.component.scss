@@ -27,27 +27,27 @@ $animationDur : 20s;
 
 .stars:nth-child(1) {
   background-position: 50% 50%;
-  animation-delay: 0s;
+  animation-delay: 0s - $animationDur/2;
 }
 
 .stars:nth-child(2) {
   background-position: 20% 60%;
-  animation-delay:($animationDur / 5 ) * 2;
+  animation-delay:($animationDur / 5 ) * 2 - $animationDur/2;
 }
 
 .stars:nth-child(3) {
   background-position: -20% -30%;
-  animation-delay:($animationDur / 5 ) * 3 ;
+  animation-delay:($animationDur / 5 ) * 3 - $animationDur/2;
 }
 
 .stars:nth-child(4) {
   background-position: 40% -80%;
-  animation-delay: ($animationDur / 5 ) * 4;
+  animation-delay: ($animationDur / 5 ) * 4 - $animationDur/2;
 }
 
 .stars:nth-child(5) {
   background-position: -20% 30%;
-  animation-delay: $animationDur;
+  animation-delay: $animationDur / 2;
 }
 
 @keyframes zoom {
@@ -77,20 +77,4 @@ $animationDur : 20s;
 
 }
 
-.container {
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 30;
-  // background-color: rgba(0, 128, 0, 0.705) ;
-  color: rgb(143, 236, 236);
-  font-size: 60px;
-  text-align: center;
-
-}
-.wrapper {
-    position: absolute;
-}
+ 

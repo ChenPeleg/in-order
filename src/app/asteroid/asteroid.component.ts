@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-asteroid',
@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./asteroid.component.scss']
 })
 export class AsteroidComponent implements OnInit {
+  @Input() left: number;
 
-  constructor() { }
+  constructor() {
 
+  }
+  getLeft() {
+    return this.left + "%"
+  }
   ngOnInit(): void {
   }
 
