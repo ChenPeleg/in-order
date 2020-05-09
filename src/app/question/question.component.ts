@@ -6,9 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./question.component.scss']
 })
 export class QuestionComponent implements OnInit {
-  // @Input()
-  // questionText1 = this.questionText
-  questionText = "לחץ על האסטרואידים לפי הסדר"
+  @Input() questionText: string;
+
   constructor() { }
 
 

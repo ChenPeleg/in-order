@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AsteroidComponent implements OnInit {
   @Input() astData: { left: number, bottom: number, text: string }
-
-
+  astSrc: Array<string>;
   constructor() {
+    this.astSrc = ["../../assets/images/astro (", "", ").png"]
 
   }
   getLeft() {
@@ -20,6 +20,12 @@ export class AsteroidComponent implements OnInit {
   }
   getText() {
     return this.astData.text
+  }
+  getImg() {
+    const num = 2
+    const src = [...this.astSrc];
+    src[1] = num.toString();
+    return src.join('')
   }
   ngOnInit(): void {
   }

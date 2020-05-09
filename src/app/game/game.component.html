@@ -1,6 +1,7 @@
 <div class="board-container">
-    <app-question></app-question>
+    <app-question [questionText]="currenQuestionText"></app-question>
     <app-space></app-space>
-    <div class="game-contatiner">Click from small to big <app-asteroid [astData]="astData"></app-asteroid>
+    <div class="game-contatiner">Click from small to big <app-asteroid *ngFor="let asteroid of asteroids"
+            [astData]="asteroid"></app-asteroid>
     </div>
 </div>
