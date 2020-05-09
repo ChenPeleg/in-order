@@ -1,4 +1,5 @@
 <div class="asteroidWrapper" [ngStyle]="{left: getLeft(), bottom:getBottom()}">
-    <img class="asteroidImage spin" [src]="getImg()" alt="asteroid">
+    <img class="asteroidImage spin" [ngClass]="{reversspin  : getRotationDir() }"
+        [style.animation-duration]="getRotationspeed()" [src]="getImg()" alt="asteroid">
     <div class="asteroid-text">{{astData.text}}</div>
 </div>

@@ -6,7 +6,7 @@
     },
     "questions": {
         "1": {
-            "text": "Click from big to small",
+            "text": "1. Click from big to small",
             "answers": [
                 "lion",
                 "dog",
@@ -14,7 +14,7 @@
             ]
         },
         "2": {
-            "text": "Click from big to small",
+            "text": "2. Click from big to small",
             "answers": [
                 "tiger",
                 "cat",
@@ -22,7 +22,7 @@
             ]
         },
         "3": {
-            "text": "Click from big to small",
+            "text": "3. Click from big to small",
             "answers": [
                 "man",
                 "child",
@@ -30,7 +30,7 @@
             ]
         },
         "4": {
-            "text": "Click from big to small",
+            "text": "4. Click from big to small",
             "answers": [
                 "car",
                 "woman",
@@ -38,7 +38,7 @@
             ]
         },
         "5": {
-            "text": "Click from big to small",
+            "text": "5. Click from big to small",
             "answers": [
                 "tree",
                 "dog",

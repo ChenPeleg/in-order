@@ -22,11 +22,22 @@ export class AsteroidComponent implements OnInit {
     return this.astData.text
   }
   getImg() {
-    const num = 2
+    const maxNum = 10;
+    const num = Math.ceil((Math.random() * maxNum))
     const src = [...this.astSrc];
     src[1] = num.toString();
     return src.join('')
   }
+  getRotationspeed() {
+    const baseSpeed: number = 20;
+    const rand = Math.random() - 0.5
+    return (baseSpeed + rand * baseSpeed) + "s"
+  }
+  getRotationDir() {
+    const rand = Math.random() - 0.5
+    return rand > 0
+  }
+
   ngOnInit(): void {
   }
 

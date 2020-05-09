@@ -12,8 +12,12 @@ export class GameComponent implements OnInit {
   currenQuestionText: string;
   constructor() {
     this.questionNumber = 1;
-    this.asteroids = [{ left: 10, bottom: -10, text: "one" }, { left: 40, bottom: -50, text: "two" }]
+    this.asteroids = [
+      { left: 10, bottom: -10, text: data.questions[1].answers[0] },
+      { left: 30, bottom: -10, text: data.questions[1].answers[1] },
+      { left: -5, bottom: -50, text: data.questions[1].answers[2] }];
   }
+
 
   ngOnInit(): void {
     console.log(data.questions[1].text)
