@@ -6,13 +6,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./asteroid.component.scss']
 })
 export class AsteroidComponent implements OnInit {
-  @Input() left: number;
+  @Input() astData: { left: number, bottom: number, text: string }
+
 
   constructor() {
 
   }
   getLeft() {
-    return this.left + "%"
+    return this.astData.left + "%"
+  }
+  getBottom() {
+    return this.astData.bottom + "%"
+  }
+  getText() {
+    return this.astData.text
   }
   ngOnInit(): void {
   }

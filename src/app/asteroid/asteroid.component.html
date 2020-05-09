@@ -1,3 +1,4 @@
-<div class="asteroidWrapper" [ngStyle]="{left: getLeft()}">
+<div class="asteroidWrapper" [ngStyle]="{left: getLeft(), bottom:getBottom()}">
     <img class="asteroidImage spin" src="../../assets/images/astro (1).png" alt="asteroid">
+    <div class="asteroid-text">{{astData.text}}</div>
 </div>

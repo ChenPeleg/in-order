@@ -1,15 +1,20 @@
-$spinduration: 15s;
+$spinduration: 35s;
 
 .asteroidWrapper{
+
     position: relative;
+    text-align: center;
+    display: inline-block;
     width: 200px;
     height: 200px;
     z-index: 50;
+    text-align: center;
 }
 .asteroidImage {
-    position: absolute;
+    position: relative;
     height: 100%;
     width: 100%;
+    z-index: 51;
 }
 .spin {
     animation-name: spin;
@@ -17,11 +22,23 @@ $spinduration: 15s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
-  .pause {
+.pause {
     animation-play-state: paused;
   }
-  @keyframes spin {
+@keyframes spin {
     100% {
       transform: rotate(1turn);
     }
+}
+  .asteroid-text{
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    height: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 0px 2px  rgb(24, 24, 24),  -2px 0px  2px   rgb(24, 24, 24) , 0px -2px  2px  rgb(24, 24, 24),  0px  2px   2px  rgb(24, 24, 24);
+    z-index: 52;
+    color: rgb(220, 240, 130);
   }
