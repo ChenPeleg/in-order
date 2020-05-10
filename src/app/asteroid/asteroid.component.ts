@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-asteroid',
@@ -6,11 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./asteroid.component.scss']
 })
 export class AsteroidComponent implements OnInit {
-  @Input() astData: { left: number, bottom: number, text: string }
+  @Output() clickAstro = new EventEmitter<{ index: number }>();
+  @Input() astData: { left: number, bottom: number, text: string, index: number }
   astSrc: Array<string>;
   constructor() {
     this.astSrc = ["../../assets/images/astro (", "", ").png"]
 
+  }
+  onClickAsteroid() {
+    alert("ast")
+    //this.clickAstro.emit({ index: this.astData.index })
   }
   getLeft() {
     return this.astData.left + "%"

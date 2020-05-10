@@ -2,6 +2,6 @@
     <app-question [questionText]="currenQuestionText"></app-question>
     <app-space></app-space>
     <div class="game-contatiner">Click from small to big <app-asteroid *ngFor="let asteroid of asteroids"
-            [astData]="asteroid"></app-asteroid>
+            [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)"></app-asteroid>
     </div>
 </div>
