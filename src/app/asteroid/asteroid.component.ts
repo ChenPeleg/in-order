@@ -9,13 +9,15 @@ export class AsteroidComponent implements OnInit {
   @Output() clickAstro = new EventEmitter<{ index: number }>();
   @Input() astData: { left: number, bottom: number, text: string, index: number }
   astSrc: Array<string>;
+  imageSrc: string;
+  isReversed: boolean;
+  rotationSpeed: string;
   constructor() {
     this.astSrc = ["../../assets/images/astro (", "", ").png"]
-
   }
   onClickAsteroid() {
-    alert("ast")
-    //this.clickAstro.emit({ index: this.astData.index })
+    //alert("ast")
+    this.clickAstro.emit({ index: this.astData.index })
   }
   getLeft() {
     return this.astData.left + "%"
@@ -44,6 +46,9 @@ export class AsteroidComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.imageSrc = this.getImg()
+    this.isReversed = this.getRotationDir()
+    this.rotationSpeed = this.getRotationspeed()
   }
 
 }
