@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import *  as  data from '../../assets/questions.json';
 import { Asteroid } from "./asteroid.model"
 
@@ -16,9 +16,9 @@ export class GameComponent implements OnInit {
   constructor() {
     this.questionNumber = 1;
     this.asteroids = [
-      { left: 10, bottom: 20, text: data.questions[1].answers[0], index: 0 },
-      { left: 40, bottom: 50, text: data.questions[1].answers[1], index: 1 },
-      { left: 70, bottom: 20, text: data.questions[1].answers[2], index: 2 }];
+      { left: 10, bottom: 20, text: data.questions[1].answers[0], index: 0, destroy: false },
+      { left: 20 /*40 */, bottom: 50, text: data.questions[1].answers[1], index: 1, destroy: false },
+      { left: 70, bottom: 20, text: data.questions[1].answers[2], index: 2, destroy: false }];
   }
   ngOnInit(): void {
     console.log(data.questions[1].text)

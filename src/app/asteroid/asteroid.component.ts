@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Asteroid } from "../game/asteroid.model"
 
 @Component({
   selector: 'app-asteroid',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class AsteroidComponent implements OnInit {
   @Output() clickAstro = new EventEmitter<{ index: number }>();
-  @Input() astData: { left: number, bottom: number, text: string, index: number }
+  @Input() astData: Asteroid;
   astSrc: Array<string>;
   imageSrc: string;
   isReversed: boolean;

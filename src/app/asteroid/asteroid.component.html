@@ -1,6 +1,7 @@
 <div class="asteroidWrapper" (click)="onClickAsteroid()" [ngStyle]="{left: getLeft(), bottom:getBottom()}"
-    [ngClass]="{destroyed:astData.destroy  }">
+    [ngClass]="{destroyed:astData.destroy}">
     <img class="asteroidImage spin" [ngClass]="{reversspin  : isReversed}" [style.animation-duration]="rotationSpeed"
         [src]="imageSrc" alt="asteroid">
     <div class="asteroid-text">{{astData.text}}</div>
+   
 </div>

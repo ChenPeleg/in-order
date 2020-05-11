@@ -1,0 +1,57 @@
+.explotionWrapper{
+    position: absolute;
+    left:40%;
+    top: 30%;
+    z-index: 5;
+    color: wheat;
+    background-color: rgba(194, 174, 137, 0.294);
+}
+
+
+$boxes: 100;
+
+body{
+  background-color: black;
+}
+
+.wrap{
+position: absolute;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: auto;
+}
+
+div.box{
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@for $i from 1 through $boxes {
+  @keyframes anim-#{$i} {
+    0% {
+      top: 50%;
+      left: 50%;
+    }
+    100%{
+      top: random(300)+px;
+      left: random(300)+px;
+      opacity: 0.2;
+    }
+   
+  }
+      
+    div.box{
+      &:nth-child(#{$i}){
+        left: $i * 10px;
+        animation-duration: 2.6s;
+        animation-name: anim-#{$i};
+        animation-iteration-count: 3;
+        // animation-direction: forward;
+        animation-timing-function: ease-in-out;
+        background: hsla(10 * $i, 100%, 50%, 1);
+      }
+    }
+}
