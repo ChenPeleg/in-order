@@ -48,10 +48,18 @@ $spinduration: 35s;
     color: rgb(220, 240, 130);
   }
 
-  .asteroidWrapper:hover {
-    filter: brightness(120%);
+  .asteroidWrapper:hover  > .asteroid-text{
+    transition: all 0.5s;
+     color: yellow;
+     text-shadow:2px 0px 2px  rgb(24, 24, 24),  -2px 0px  2px   rgb(24, 24, 24) , 0px -2px  2px  rgb(24, 24, 24),  0px  2px   2px  rgb(24, 24, 24) 2px 2px 10px 10px rgb(226, 194, 194);
    
   }
   .destroyed {
-    opacity: 0.3;
+    transition: all 0.2;
+    opacity:0 ;
   }
+  .hot{
+    transition: all 0.5s;
+    filter: invert(22%) sepia(82%) saturate(400%) hue-rotate(325deg) brightness(88%) contrast(100%) ;
+  }
+ 

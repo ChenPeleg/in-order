@@ -1,14 +1,14 @@
 .explotionWrapper{
     position: absolute;
-    left:40%;
-    top: 30%;
+    left:-25%;
+    top: -20%;
     z-index: 5;
     color: wheat;
-    background-color: rgba(194, 174, 137, 0.294);
 }
 
 
 $boxes: 100;
+$size: 300;
 
 body{
   background-color: black;
@@ -16,8 +16,8 @@ body{
 
 .wrap{
 position: absolute;
-  width: 300px;
-  height: 300px;
+  width: $size + px;
+  height: $size + px;
   position: relative;
   margin: auto;
 }
@@ -34,11 +34,15 @@ div.box{
     0% {
       top: 50%;
       left: 50%;
+      opacity: 5;
     }
+    // 70%{     
+    //     opacity: 0.5;
+    //   }
     100%{
-      top: random(300)+px;
-      left: random(300)+px;
-      opacity: 0.2;
+      top: random($size)+px;
+      left: random($size)+px;
+      opacity: 0;
     }
    
   }
@@ -46,12 +50,12 @@ div.box{
     div.box{
       &:nth-child(#{$i}){
         left: $i * 10px;
-        animation-duration: 2.6s;
+        animation-duration: 1s;
         animation-name: anim-#{$i};
-        animation-iteration-count: 3;
-        // animation-direction: forward;
-        animation-timing-function: ease-in-out;
-        background: hsla(10 * $i, 100%, 50%, 1);
+        animation-iteration-count: 1;
+        animation-timing-function:cubic-bezier(.03,.93,.04,.93);
+        animation-fill-mode: forwards;
+        background: hsla(10 *  $i, 100%, 90%, 1);
       }
     }
 }
