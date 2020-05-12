@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
   constructor() {
     this.questionNumber = 1;
     this.nextCorrect = 0;
-    this.namesArr = ['one', 'two', "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+    this.namesArr = ['one', 'two', "three", "four", "five",]// "six", "seven", "eight", "nine", "ten"]
 
   }
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class GameComponent implements OnInit {
     this.asteroids = this.setAstroidData()
   }
   spacePressHandler(): void {
-    this.namesArr.pop()
+    // this.namesArr.pop()
     this.asteroids = this.setAstroidData();
 
   }
@@ -43,22 +43,32 @@ export class GameComponent implements OnInit {
 
   }
   setAstroidData(): Array<Asteroid> {
+    const preventOverflow = (num: number): number => {
+      if (num > 90) { num = 90 } else if (num < 10) { num = 10 }
+      return num
+    }
     let namesArr: Array<string> = this.namesArr
-
-    const steps: number = namesArr.length;
+    const steps: number = namesArr.length + 2 * Math.random();
     const centerX = 50;
     const centerY = 50;
-    const radius = 30;
+    const radius = 40;
     let xValues: Array<number> = []
     let yValues: Array<number> = []
     for (var i: number = 1; i < steps; i++) {
-      xValues[i] = (centerX + radius * Math.cos(2 * Math.PI * i / steps));
+      xValues[i] = (centerX + radius * Math.cos(2 * Math.PI * i / (steps - 1)));
       yValues[i] = (centerY + radius * Math.sin(2 * Math.PI * i / steps));
     }
     xValues[0] = 50; yValues[0] = 50;
-    const arr1: Array<Asteroid> = namesArr.map(n => { return { left: xValues[namesArr.indexOf(n)], bottom: yValues[namesArr.indexOf(n)], text: n, index: namesArr.indexOf(n), destroy: false } })
+    let arr1: Array<Asteroid> = namesArr.map(n => { return { left: xValues[namesArr.indexOf(n)], bottom: yValues[namesArr.indexOf(n)], text: n, index: namesArr.indexOf(n), destroy: false } });
+    arr1 = arr1.map(a => {
+      let ast = { ...a };
+      const rnd = (Math.random() - 0.5) * 20
+      const index = arr1.indexOf(a)
+      ast.left = preventOverflow(ast.left + rnd)
+      ast.bottom = preventOverflow(ast.bottom + rnd)
 
-
+      return ast
+    })
     let arr = [...arr1];
 
     return arr
@@ -69,13 +79,17 @@ export class GameComponent implements OnInit {
     while (this.nextCorrect < this.asteroids.length && this.asteroids[this.nextCorrect].destroy) {
       this.nextCorrect++
     }
-    console.log(this.nextCorrect)
+
     if (this.nextCorrect === this.asteroids.length) {
       alert('next Question')
     }
   }
   wrongHandler(num: number): void {
-    this.asteroids[num].hot = true
+    if (this.asteroids[num].hot) {
+      this.asteroids[num].destroy = true
+    } else {
+      this.asteroids[num].hot = true
+    }
   }
 
 }
