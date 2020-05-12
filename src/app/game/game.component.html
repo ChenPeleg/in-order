@@ -1,8 +1,12 @@
 <div class="board-container">
     <app-question [questionText]="currenQuestionText"></app-question>
     <app-space></app-space>
-    <div class="game-contatiner">Click from small to big <app-asteroid *ngFor="let asteroid of asteroids"
-            [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)"></app-asteroid>
+    <div class="game-contatiner">
+        Click from small to big
+        <div class="asteroids-container">
+            <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid"
+                (clickAstro)="asteroidClickHandler($event)"></app-asteroid>
+        </div>
     </div>
 
 </div>

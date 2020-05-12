@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import *  as  data from '../../assets/questions.json';
 import { Asteroid } from "./asteroid.model"
 
@@ -13,16 +13,29 @@ export class GameComponent implements OnInit {
   questionNumber: number
   currenQuestionText: string;
   nextCorrect: number;
+  namesArr: Array<string>;
+
+
 
   constructor() {
     this.questionNumber = 1;
     this.nextCorrect = 0;
+    this.namesArr = ['one', 'two', "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
   }
   ngOnInit(): void {
     console.log(data.questions[1].text)
     this.currenQuestionText = data.questions[1].text;
     this.asteroids = this.setAstroidData()
+  }
+  spacePressHandler(): void {
+    this.namesArr.pop()
+    this.asteroids = this.setAstroidData();
 
+  }
+  @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    event.code === "Space" ? this.spacePressHandler() : null
 
   }
   asteroidClickHandler(clickData: { index: number }): void {
@@ -30,25 +43,24 @@ export class GameComponent implements OnInit {
 
   }
   setAstroidData(): Array<Asteroid> {
-    const namesArr: Array<string> = ['one', 'two', "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+    let namesArr: Array<string> = this.namesArr
 
-    const steps: number = 10;
+    const steps: number = namesArr.length;
     const centerX = 50;
     const centerY = 50;
-    const radius = 35;
+    const radius = 30;
     let xValues: Array<number> = []
     let yValues: Array<number> = []
-    for (var i: number = 0; i < steps; i++) {
+    for (var i: number = 1; i < steps; i++) {
       xValues[i] = (centerX + radius * Math.cos(2 * Math.PI * i / steps));
       yValues[i] = (centerY + radius * Math.sin(2 * Math.PI * i / steps));
     }
-    const arr1: Array<Asteroid> = namesArr.map(n => { return { left: namesArr.indexOf(n) * 8, bottom: 20, text: n, index: namesArr.indexOf(n), destroy: false } })
+    xValues[0] = 50; yValues[0] = 50;
+    const arr1: Array<Asteroid> = namesArr.map(n => { return { left: xValues[namesArr.indexOf(n)], bottom: yValues[namesArr.indexOf(n)], text: n, index: namesArr.indexOf(n), destroy: false } })
+
 
     let arr = [...arr1];
-    //  [
-    //   { left: 10, bottom: 20, text: data.questions[1].answers[0], index: 0, destroy: false },
-    //   { left: 40, bottom: 50, text: data.questions[1].answers[1], index: 1, destroy: false },
-    //   { left: 70, bottom: 20, text: data.questions[1].answers[2], index: 2, destroy: false }];
+
     return arr
   }
   correctHandler(num: number): void {
