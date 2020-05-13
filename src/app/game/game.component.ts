@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import *  as  data from '../../assets/questions.json';
-import { Asteroid } from "./asteroid.model"
+import { Asteroid } from "./asteroid.model";
+import { Laser } from "./laser.model";
 
 @Component({
   selector: 'app-game',
@@ -15,7 +16,8 @@ export class GameComponent implements OnInit {
   nextCorrect: number;
   namesArr: Array<string>;
   showLaser: boolean;
-  laserData: { showLaser: boolean, laserX: number, laserY: number };
+  laserData: Laser;
+  public innerWidth: any;
 
 
 
@@ -31,6 +33,7 @@ export class GameComponent implements OnInit {
     console.log(data.questions[1].text)
     this.currenQuestionText = data.questions[1].text;
     this.asteroids = this.setAstroidData()
+    this.innerWidth = window.innerWidth;
   }
   spacePressHandler(): void {
     // this.namesArr.pop()
@@ -40,7 +43,6 @@ export class GameComponent implements OnInit {
   @HostListener('document:keyup', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     event.code === "Space" ? this.spacePressHandler() : null
-
   }
   asteroidClickHandler(clickData: { index: number }): void {
     if (clickData.index === this.nextCorrect) { this.correctHandler(clickData.index) } else { this.wrongHandler(clickData.index) }
@@ -48,16 +50,16 @@ export class GameComponent implements OnInit {
   }
   @HostListener('document:mousemove', ['$event'])
   mousemoveEventHandler(event: MouseEvent): void {
-    if (this.showLaser) {
-      this.asteroidHoverHandler({ x: event.clientX, y: event.clientY, isOn: true })
+    if (this.showLaser && !this.laserData.laserFiring) {
+      this.laserData.laserX = event.clientX + 10;
+      this.laserData.laserY = event.clientY + 14;
+      this.laserData.laserAngle = (event.clientX - (this.innerWidth / 2)) / 10;
     }
-
   }
-  asteroidHoverHandler(hoverData: { x: number, y: number, isOn: boolean }): void {
+  asteroidHoverHandler(hoverData: { isOn: boolean }): void {
+    if (this.laserData.laserFiring) { return }
     this.showLaser = hoverData.isOn;
     this.laserData.showLaser = hoverData.isOn;
-    this.laserData.laserX = hoverData.x;
-    this.laserData.laserY = hoverData.y;
   }
   setAstroidData(): Array<Asteroid> {
     const preventOverflow = (num: number): number => {
@@ -91,22 +93,29 @@ export class GameComponent implements OnInit {
     return arr
   }
   correctHandler(num: number): void {
-    this.asteroids[num].destroy = true
+    this.explodeAsteroid(num)
     this.nextCorrect = this.nextCorrect + 1;
     while (this.nextCorrect < this.asteroids.length && this.asteroids[this.nextCorrect].destroy) {
       this.nextCorrect++
     }
-
     if (this.nextCorrect === this.asteroids.length) {
       alert('next Question')
     }
   }
   wrongHandler(num: number): void {
-    if (this.asteroids[num].hot) {
-      this.asteroids[num].destroy = true
+    if (this.asteroids[num].warm) {
+      this.explodeAsteroid(num)
     } else {
-      this.asteroids[num].hot = true
+      this.asteroids[num].warm = true
     }
+  }
+  explodeAsteroid(num: number) {
+    this.asteroids[num].destroy = true
+    this.laserData.laserFiring = true;
+    setTimeout(() => {
+      this.laserData.laserFiring = false;
+      this.asteroids[num].explode = true
+    }, 800)
   }
 
 }

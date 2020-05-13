@@ -8,7 +8,7 @@ import { Asteroid } from "../game/asteroid.model"
 })
 export class AsteroidComponent implements OnInit {
   @Output() clickAstro = new EventEmitter<{ index: number }>();
-  @Output() hoverAstro = new EventEmitter<{ x: number, y: number, isOn: boolean }>();
+  @Output() hoverAstro = new EventEmitter<{ isOn: boolean }>();
 
   @Input() astData: Asteroid;
   astSrc: Array<string>;
@@ -18,13 +18,13 @@ export class AsteroidComponent implements OnInit {
   constructor() {
     this.astSrc = ["../../assets/images/astro (", "", ").png"]
   }
-  
+
   mouseEnterAsteroid(event: any) {
-    console.log(event.clientX, event.clientY)
-    this.hoverAstro.emit({ x: event.clientX, y: event.clientY, isOn: true })
+    this.hoverAstro.emit({ isOn: true })
   }
   mouseExitAsteroid(event: any) {
-    this.hoverAstro.emit({ x: event.clientX, y: event.clientY, isOn: false })
+    console.log(event.toElement)
+    this.hoverAstro.emit({ isOn: false })
   }
   onClickAsteroid() {
     //alert("ast")

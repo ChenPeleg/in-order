@@ -4,14 +4,16 @@ export class Asteroid {
     public text: string;
     public index: number;
     public destroy: boolean;
-    public hot?: boolean;
-    constructor(left: number, bottom: number, text: string, index: number, destroy: boolean) {
+    public warm?: boolean;
+    public explode?: boolean;
+    constructor(left: number, bottom: number, text: string, index: number, destroy: boolean, warm?: boolean) {
         this.left = left;
         this.bottom = bottom;
         this.text = text;
         this.index = index;
         this.destroy = false;
-        this.hot = false;
+        this.warm = false;
+        this.explode = false;
 
     }
 } 

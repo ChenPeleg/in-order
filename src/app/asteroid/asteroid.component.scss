@@ -56,9 +56,17 @@ $astroidSize : 100 ;
      text-shadow:2px 0px 2px  rgb(24, 24, 24),  -2px 0px  2px   rgb(24, 24, 24) , 0px -2px  2px  rgb(24, 24, 24),  0px  2px   2px  rgb(24, 24, 24) 2px 2px 10px 10px rgb(226, 194, 194);
    
   }
-  .destroyed {
+  .explode {
     transition: all 0.2;
     opacity:0  ;
+  }
+  .destroyed {
+    // transition: all 0.2;
+    // opacity:0  ;
+  }
+  .warm{
+    transition: all 0.5s;
+    filter: invert(22%) sepia(82%) saturate(400%) hue-rotate(325deg) brightness(88%) contrast(100%) ;
   }
   .hot{
     transition: all 0.5s;

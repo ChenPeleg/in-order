@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Laser } from "../game/laser.model";
 
 @Component({
   selector: 'app-laser',
@@ -7,8 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LaserComponent implements OnInit {
 
-  @Input()
-  laserData: { showLaser: boolean, laserX: number, laserY: number };
+  @Input() laserData: Laser;
 
   constructor() {
 
