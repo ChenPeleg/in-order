@@ -14,6 +14,8 @@ export class GameComponent implements OnInit {
   currenQuestionText: string;
   nextCorrect: number;
   namesArr: Array<string>;
+  showLaser: boolean;
+  laserData: { showLaser: boolean, laserX: number, laserY: number };
 
 
 
@@ -21,6 +23,8 @@ export class GameComponent implements OnInit {
     this.questionNumber = 1;
     this.nextCorrect = 0;
     this.namesArr = ['one', 'two', "three", "four", "five",]// "six", "seven", "eight", "nine", "ten"]
+    this.showLaser = true;
+    this.laserData = { showLaser: false, laserX: 0, laserY: 0 }
 
   }
   ngOnInit(): void {
@@ -41,6 +45,19 @@ export class GameComponent implements OnInit {
   asteroidClickHandler(clickData: { index: number }): void {
     if (clickData.index === this.nextCorrect) { this.correctHandler(clickData.index) } else { this.wrongHandler(clickData.index) }
 
+  }
+  @HostListener('document:mousemove', ['$event'])
+  mousemoveEventHandler(event: MouseEvent): void {
+    if (this.showLaser) {
+      this.asteroidHoverHandler({ x: event.clientX, y: event.clientY, isOn: true })
+    }
+
+  }
+  asteroidHoverHandler(hoverData: { x: number, y: number, isOn: boolean }): void {
+    this.showLaser = hoverData.isOn;
+    this.laserData.showLaser = hoverData.isOn;
+    this.laserData.laserX = hoverData.x;
+    this.laserData.laserY = hoverData.y;
   }
   setAstroidData(): Array<Asteroid> {
     const preventOverflow = (num: number): number => {

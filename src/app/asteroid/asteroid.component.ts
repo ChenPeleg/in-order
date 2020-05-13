@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Asteroid } from "../game/asteroid.model"
 
 @Component({
@@ -8,6 +8,8 @@ import { Asteroid } from "../game/asteroid.model"
 })
 export class AsteroidComponent implements OnInit {
   @Output() clickAstro = new EventEmitter<{ index: number }>();
+  @Output() hoverAstro = new EventEmitter<{ x: number, y: number, isOn: boolean }>();
+
   @Input() astData: Asteroid;
   astSrc: Array<string>;
   imageSrc: string;
@@ -15,6 +17,14 @@ export class AsteroidComponent implements OnInit {
   rotationSpeed: string;
   constructor() {
     this.astSrc = ["../../assets/images/astro (", "", ").png"]
+  }
+  
+  mouseEnterAsteroid(event: any) {
+    console.log(event.clientX, event.clientY)
+    this.hoverAstro.emit({ x: event.clientX, y: event.clientY, isOn: true })
+  }
+  mouseExitAsteroid(event: any) {
+    this.hoverAstro.emit({ x: event.clientX, y: event.clientY, isOn: false })
   }
   onClickAsteroid() {
     //alert("ast")

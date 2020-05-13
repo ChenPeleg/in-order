@@ -7,6 +7,7 @@ import { SpaceComponent } from './space/space.component';
 import { GameComponent } from './game/game.component';
 import { QuestionComponent } from './question/question.component';
 import { ExplotionComponent } from './explotion/explotion.component';
+import { LaserComponent } from './laser/laser.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ExplotionComponent } from './explotion/explotion.component';
     SpaceComponent,
     GameComponent,
     QuestionComponent,
-    ExplotionComponent
+    ExplotionComponent,
+    LaserComponent
   ],
   imports: [
     BrowserModule

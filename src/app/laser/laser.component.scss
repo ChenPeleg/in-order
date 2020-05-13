@@ -1,0 +1,17 @@
+.laser-Container {
+position: fixed;
+left:50%;
+top: 50%;
+background-color:  red;
+width: 10px;
+height: 1000px;
+z-index: 201;
+border-radius: 10px;
+transform: rotate(10deg);
+transform-origin: top left;
+display: none;
+
+}
+.show {
+    display: inline;
+}
