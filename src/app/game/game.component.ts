@@ -15,7 +15,6 @@ export class GameComponent implements OnInit {
   currenQuestionText: string;
   nextCorrect: number;
   namesArr: Array<string>;
-  showLaser: boolean;
   laserData: Laser;
   public innerWidth: any;
 
@@ -25,7 +24,6 @@ export class GameComponent implements OnInit {
     this.questionNumber = 1;
     this.nextCorrect = 0;
     this.namesArr = ['one', 'two', "three", "four", "five",]// "six", "seven", "eight", "nine", "ten"]
-    this.showLaser = true;
     this.laserData = { showLaser: false, laserX: 0, laserY: 0 }
 
   }
@@ -46,20 +44,20 @@ export class GameComponent implements OnInit {
   }
   asteroidClickHandler(clickData: { index: number }): void {
     if (clickData.index === this.nextCorrect) { this.correctHandler(clickData.index) } else { this.wrongHandler(clickData.index) }
-
   }
   @HostListener('document:mousemove', ['$event'])
   mousemoveEventHandler(event: MouseEvent): void {
-    if (this.showLaser && !this.laserData.laserFiring) {
+    if (this.laserData.showLaser) { // && !this.laserData.laserFiring
       this.laserData.laserX = event.clientX + 10;
       this.laserData.laserY = event.clientY + 14;
       this.laserData.laserAngle = (event.clientX - (this.innerWidth / 2)) / 10;
     }
   }
   asteroidHoverHandler(hoverData: { isOn: boolean }): void {
-    if (this.laserData.laserFiring) { return }
-    this.showLaser = hoverData.isOn;
+    // if (this.laserData.laserFiring) { return }
+    if (this.laserData.laserFiring && !this.laserData.showLaser) { return }
     this.laserData.showLaser = hoverData.isOn;
+
   }
   setAstroidData(): Array<Asteroid> {
     const preventOverflow = (num: number): number => {
@@ -115,7 +113,7 @@ export class GameComponent implements OnInit {
     setTimeout(() => {
       this.laserData.laserFiring = false;
       this.asteroids[num].explode = true
-    }, 800)
+    }, 600)
   }
 
 }

@@ -20,14 +20,16 @@ export class AsteroidComponent implements OnInit {
   }
 
   mouseEnterAsteroid(event: any) {
+    if (this.astData.explode) return
     this.hoverAstro.emit({ isOn: true })
+
   }
   mouseExitAsteroid(event: any) {
-    console.log(event.toElement)
+    if (this.astData.explode) return
     this.hoverAstro.emit({ isOn: false })
   }
   onClickAsteroid() {
-    //alert("ast")
+    if (this.astData.explode) return
     this.clickAstro.emit({ index: this.astData.index })
   }
   getLeft() {
