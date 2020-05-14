@@ -6,7 +6,8 @@ export class Asteroid {
     public destroy: boolean;
     public warm?: boolean;
     public explode?: boolean;
-    constructor(left: number, bottom: number, text: string, index: number, destroy: boolean, warm?: boolean) {
+    public removed?: boolean;
+    constructor(left: number, bottom: number, text: string, index: number, destroy: boolean, warm?: boolean, removed?: boolean) {
         this.left = left;
         this.bottom = bottom;
         this.text = text;
@@ -14,6 +15,7 @@ export class Asteroid {
         this.destroy = false;
         this.warm = false;
         this.explode = false;
+        this.removed = false;
 
     }
 } 
