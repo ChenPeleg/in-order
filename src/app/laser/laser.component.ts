@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Laser } from "../game/laser.model";
+import { Laser } from "../models/laser.model";
 
 @Component({
   selector: 'app-laser',

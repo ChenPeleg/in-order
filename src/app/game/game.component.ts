@@ -1,10 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { AsteroidPositionService } from "../services/asteroid-position.service"
 import *  as  data from '../../assets/questions.json';
-import { Asteroid } from "./asteroid.model";
-import { AsteroidPosition } from "../game/asteroidPosition.model"
-import { Laser } from "./laser.model";
-
+import { Asteroid } from "../models/asteroid.model";
+import { AsteroidPosition } from "../models/asteroidPosition.model"
+import { AsteroidPositionService } from "../services/asteroid-position-service/asteroid-position.service"
+import { Laser } from "../models/laser.model";
+import { LaserPosition } from "../models/LaserPosition.model"
+import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -20,8 +21,9 @@ export class GameComponent implements OnInit {
   namesArr: Array<string>;
   laserData: Laser;
   public innerWidth: any;
+  public innerHeight: any;
 
-  constructor(private positionService: AsteroidPositionService) {
+  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService) {
     this.questionNumber = 1;
     this.nextCorrect = 0;
     this.namesArr = ['one', 'two', "three", "four", "five",]// "six", "seven", "eight", "nine", "ten"]
@@ -33,6 +35,7 @@ export class GameComponent implements OnInit {
     this.currenQuestionText = data.questions[1].text;
     this.asteroids = this.setAstroidData()
     this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
   }
   spacePressHandler(): void {
     this.asteroids = this.setAstroidData();
@@ -47,6 +50,7 @@ export class GameComponent implements OnInit {
   @HostListener('document:mousemove', ['$event'])
   mousemoveEventHandler(event: MouseEvent): void {
     if (this.laserData.showLaser) {
+      console.log(this.laserPositionSrv.setLaserPosition(event.clientX, event.clientY, this.innerWidth, this.innerHeight))
       this.laserData.laserX = event.clientX + 10;
       this.laserData.laserY = event.clientY + 14;
       this.laserData.laserAngle = (event.clientX - (this.innerWidth / 2)) / 10;
@@ -58,11 +62,11 @@ export class GameComponent implements OnInit {
 
   }
   setAstroidData(): Array<Asteroid> {
- 
+
     let namesArr: Array<string> = this.namesArr
     const steps: number = namesArr.length + 2 * Math.random();
-    const { xValues, yValues }: AsteroidPosition = this.positionService.setPositionList(steps);
-    
+    const { xValues, yValues }: AsteroidPosition = this.asteroidPositionSrv.setPositionList(steps);
+
     let asteroidArray: Array<Asteroid> = namesArr.map(n => { return { left: xValues[namesArr.indexOf(n)], bottom: yValues[namesArr.indexOf(n)], text: n, index: namesArr.indexOf(n), destroy: false } });
 
     return asteroidArray

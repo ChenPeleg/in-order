@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AsteroidPosition } from "../game/asteroidPosition.model"
+import { AsteroidPosition } from "../../models/asteroidPosition.model"
 @Injectable({
   providedIn: 'root'
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, HostListener } from '@angular/core';
-import { Asteroid } from "../game/asteroid.model"
+import { Asteroid } from "../models/asteroid.model"
 
 @Component({
   selector: 'app-asteroid',
