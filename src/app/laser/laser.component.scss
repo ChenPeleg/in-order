@@ -18,11 +18,13 @@ border-radius: 70%   70%  10px  10px;
  
 transform: rotate(10deg);
 transform-origin: top left;
-display: none;
+
 animation: laserflow 0.15s infinite ease-in-out;
-opacity: 0.2;
+
 transition: opacity 0.1s ease-in-out;
 
+opacity: 0.3;
+display: none;
 }
 @keyframes laserflow {
     0% {

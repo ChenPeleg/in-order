@@ -31,7 +31,7 @@ export class GameComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log(data.questions[1].text)
+
     this.currenQuestionText = data.questions[1].text;
     this.asteroids = this.setAstroidData()
     this.innerWidth = window.innerWidth;
@@ -50,10 +50,7 @@ export class GameComponent implements OnInit {
   @HostListener('document:mousemove', ['$event'])
   mousemoveEventHandler(event: MouseEvent): void {
     if (this.laserData.showLaser) {
-      console.log(this.laserPositionSrv.setLaserPosition(event.clientX, event.clientY, this.innerWidth, this.innerHeight))
-      this.laserData.laserX = event.clientX + 10;
-      this.laserData.laserY = event.clientY + 14;
-      this.laserData.laserAngle = (event.clientX - (this.innerWidth / 2)) / 10;
+      this.laserData = { ...this.laserData, ...this.laserPositionSrv.setLaserPosition(event.clientX, event.clientY, this.innerWidth, this.innerHeight) }
     }
   }
   asteroidHoverHandler(hoverData: { isOn: boolean }): void {
