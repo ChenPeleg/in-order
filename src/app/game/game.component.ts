@@ -4,7 +4,6 @@ import { Asteroid } from "../models/asteroid.model";
 import { AsteroidPosition } from "../models/asteroidPosition.model"
 import { AsteroidPositionService } from "../services/asteroid-position-service/asteroid-position.service"
 import { Laser } from "../models/laser.model";
-import { LaserPosition } from "../models/LaserPosition.model"
 import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
 @Component({
   selector: 'app-game',
@@ -31,7 +30,6 @@ export class GameComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
     this.currenQuestionText = data.questions[1].text;
     this.asteroids = this.setAstroidData()
     this.innerWidth = window.innerWidth;
@@ -91,7 +89,7 @@ export class GameComponent implements OnInit {
     setTimeout(() => {
       this.laserData.laserFiring = false;
       this.asteroids[num].explode = true
-      setTimeout(() => { this.asteroids[num].removed = true }, 1000)
+      setTimeout(() => { this.asteroids[num].removed = true }, 800)
     }, 600)
   }
 

@@ -5,17 +5,26 @@
 }
 
 .question {
-    font-family: "Quicksand";
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 30;
-      // background-color: rgba(0, 128, 0, 0.705) ;
-      color: rgb(143, 236, 236);
-      font-size: 60px;
-      text-align: center;
-    }
+  $stroke-size1: 3px; 
+  $blur-size1: 4px; 
+  $shadow-color1 :  #ffffff;
+
+  $stroke-size2: 2px; 
+  $blur-size2: 2px; 
+  $shadow-color2 :  #0a14a7;
+ 
+  font-family: "Quicksand";
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  // background-color: rgba(0, 128, 0, 0.705) ;
+  color: rgb(252, 248, 42);
+  font-size: 40px;
+  text-align: center;
+  text-shadow: (-1 * $stroke-size2) (-1 *$stroke-size2) $blur-size2 $shadow-color2 ,$stroke-size2 $stroke-size2 $blur-size2 $shadow-color2,(-1 * $stroke-size2) $stroke-size2 $blur-size2 $shadow-color2,$stroke-size2 (-1 * $stroke-size2)   $blur-size2 $shadow-color2, (-1 * $stroke-size1) (-1 *$stroke-size1) $blur-size1 $shadow-color1 ,$stroke-size1 $stroke-size1 $blur-size1 $shadow-color1,(-1 * $stroke-size1) $stroke-size1 $blur-size1 $shadow-color1,$stroke-size1 (-1 * $stroke-size1)   $blur-size1 $shadow-color1 ;
+  }
     
