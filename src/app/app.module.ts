@@ -6,6 +6,7 @@ import { SpaceComponent } from './space/space.component';
 import { GameComponent } from './game/game.component';
 import { QuestionComponent } from './question/question.component';
 import { ExplotionComponent } from './explotion/explotion.component';
+import { GamecontrollerService } from "./services/game-controller/gamecontroller.service"
 import { LaserComponent } from './laser/laser.component';
 import { GamebarComponent } from './gamebar/gamebar.component';
 
@@ -23,7 +24,7 @@ import { GamebarComponent } from './gamebar/gamebar.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [GamecontrollerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

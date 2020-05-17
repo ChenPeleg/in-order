@@ -5,6 +5,8 @@ import { AsteroidPosition } from "../models/asteroidPosition.model"
 import { AsteroidPositionService } from "../services/asteroid-position-service/asteroid-position.service"
 import { Laser } from "../models/laser.model";
 import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
+import { GamecontrollerService } from "../services/game-controller/gamecontroller.service"
+// import { ConsoleReporter } from 'jasmine';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -17,23 +19,24 @@ export class GameComponent implements OnInit {
   questionNumber: number
   currenQuestionText: string;
   nextCorrect: number;
-  namesArr: Array<string>;
+
   laserData: Laser;
   public innerWidth: any;
   public innerHeight: any;
 
-  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService) {
+  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService) {
     this.questionNumber = 1;
     this.nextCorrect = 0;
-    this.namesArr = ['one', 'two', "three", "four", "five",]// "six", "seven", "eight", "nine", "ten"]
+
     this.laserData = { showLaser: false, laserX: 0, laserY: 0 }
 
   }
   ngOnInit(): void {
-    this.currenQuestionText = data.questions[1].text;
+    this.currenQuestionText = this.gamecontrollerService.getCurrentQuestion();
     this.asteroids = this.setAstroidData()
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
+
   }
   spacePressHandler(): void {
     this.asteroids = this.setAstroidData();
@@ -57,12 +60,15 @@ export class GameComponent implements OnInit {
 
   }
   setAstroidData(): Array<Asteroid> {
+    const answers = this.gamecontrollerService.getCurrentAnswers()
+    let namesArr: Array<string> = answers;
 
-    let namesArr: Array<string> = this.namesArr
     const steps: number = namesArr.length + 2 * Math.random();
-    const { xValues, yValues }: AsteroidPosition = this.asteroidPositionSrv.setPositionList(steps);
 
-    let asteroidArray: Array<Asteroid> = namesArr.map(n => { return { left: xValues[namesArr.indexOf(n)], bottom: yValues[namesArr.indexOf(n)], text: n, index: namesArr.indexOf(n), destroy: false } });
+    const { xValues, yValues, positionsXY }: AsteroidPosition = this.asteroidPositionSrv.setPositionList(steps);
+    console.log(positionsXY)
+
+    let asteroidArray: Array<Asteroid> = namesArr.map(n => { return { left: positionsXY[namesArr.indexOf(n)].x, bottom: positionsXY[namesArr.indexOf(n)].y, text: n, index: namesArr.indexOf(n), destroy: false } });
 
     return asteroidArray
   }
