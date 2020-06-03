@@ -57,17 +57,18 @@ export class GameComponent implements OnInit {
   asteroidHoverHandler(hoverData: { isOn: boolean }): void {
     if (this.laserData.laserFiring && !this.laserData.showLaser) { return }
     this.laserData.showLaser = hoverData.isOn;
-
   }
   setAstroidData(): Array<Asteroid> {
     const answers = this.gamecontrollerService.getCurrentAnswers()
-
     const positionsXY: Array<AsteroidPosition> = this.asteroidPositionSrv.setPositionList(answers.length);
-    const reorderedPositions: Array<AsteroidPosition> = this.ReorderPositionsService.reorderPositions(positionsXY)
-    let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: reorderedPositions[answers.indexOf(n)].x, bottom: reorderedPositions[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false } });
 
-    // const reorderedAsteroids: Array<Asteroid> = this.reorderAst.reorderAnswers(asteroidArray);
-    return asteroidArray //  asteroidArray
+    const reorderedPositions: Array<AsteroidPosition> = this.ReorderPositionsService.reorderPositions(positionsXY);
+    const popOrder = answers.map((n: any): number[] => answers.indexOf(n)).sort(() => Math.random() - 0.5);
+    console.log(popOrder)
+    let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: reorderedPositions[answers.indexOf(n)].x, bottom: reorderedPositions[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false, order: popOrder[answers.indexOf(n)] } });
+
+
+    return asteroidArray
   }
   correctHandler(num: number): void {
     console.log(num)

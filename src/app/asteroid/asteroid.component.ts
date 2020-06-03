@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Asteroid } from "../models/asteroid.model"
 
+
 @Component({
   selector: 'app-asteroid',
   templateUrl: './asteroid.component.html',
@@ -14,9 +15,12 @@ export class AsteroidComponent implements OnInit {
   astSrc: Array<string>;
   imageSrc: string;
   isReversed: boolean;
+  isPoped: boolean;
   rotationSpeed: string;
+  public readonly showDelay: number = 150;
   constructor() {
     this.astSrc = ["../../assets/images/astro (", "", ").png"]
+    this.isPoped = false;
   }
 
   mouseEnterAsteroid(event: any) {
@@ -63,6 +67,7 @@ export class AsteroidComponent implements OnInit {
     this.imageSrc = this.getImg()
     this.isReversed = this.getRotationDir()
     this.rotationSpeed = this.getRotationspeed()
+    setTimeout(() => { this.isPoped = true }, (this.astData.order * this.showDelay))
   }
 
 }
