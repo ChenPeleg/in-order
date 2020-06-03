@@ -9,6 +9,7 @@ import { ExplotionComponent } from './explotion/explotion.component';
 import { GamecontrollerService } from "./services/game-controller/gamecontroller.service"
 import { LaserComponent } from './laser/laser.component';
 import { GamebarComponent } from './gamebar/gamebar.component';
+import { BigMessageComponent } from './big-message/big-message.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GamebarComponent } from './gamebar/gamebar.component';
     QuestionComponent,
     ExplotionComponent,
     LaserComponent,
-    GamebarComponent
+    GamebarComponent,
+    BigMessageComponent
   ],
   imports: [
     BrowserModule

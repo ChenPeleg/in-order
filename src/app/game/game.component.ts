@@ -7,6 +7,7 @@ import { Laser } from "../models/laser.model";
 import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
 import { GamecontrollerService } from "../services/game-controller/gamecontroller.service"
 import { ReorderPositionsService } from "../services/reorder-positions/reorder-positions.service"
+import { BigMessageComponent } from "../big-message/big-message.component"
 // import { ConsoleReporter } from 'jasmine';
 @Component({
   selector: 'app-game',
@@ -66,8 +67,6 @@ export class GameComponent implements OnInit {
     const popOrder = answers.map((n: any): number[] => answers.indexOf(n)).sort(() => Math.random() - 0.5);
     console.log(popOrder)
     let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: reorderedPositions[answers.indexOf(n)].x, bottom: reorderedPositions[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false, order: popOrder[answers.indexOf(n)] } });
-
-
     return asteroidArray
   }
   correctHandler(num: number): void {
