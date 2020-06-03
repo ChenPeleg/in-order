@@ -6,13 +6,13 @@ import { AsteroidPositionService } from "../services/asteroid-position-service/a
 import { Laser } from "../models/laser.model";
 import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
 import { GamecontrollerService } from "../services/game-controller/gamecontroller.service"
-import { ReorderAnswersService } from "../services/reorder-answers/reorder-answers.service"
+import { ReorderPositionsService } from "../services/reorder-positions/reorder-positions.service"
 // import { ConsoleReporter } from 'jasmine';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  providers: [AsteroidPositionService]
+  providers: [AsteroidPositionService, ReorderPositionsService]
 })
 export class GameComponent implements OnInit {
 
@@ -25,7 +25,7 @@ export class GameComponent implements OnInit {
   public innerWidth: any;
   public innerHeight: any;
 
-  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderAnswersService) {
+  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderPositionsService, private ReorderPositionsService: ReorderPositionsService) {
     this.questionNumber = 1;
     this.nextCorrect = 0;
 
@@ -63,8 +63,8 @@ export class GameComponent implements OnInit {
     const answers = this.gamecontrollerService.getCurrentAnswers()
 
     const positionsXY: Array<AsteroidPosition> = this.asteroidPositionSrv.setPositionList(answers.length);
-
-    let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: positionsXY[answers.indexOf(n)].x, bottom: positionsXY[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false } });
+    const reorderedPositions: Array<AsteroidPosition> = this.ReorderPositionsService.reorderPositions(positionsXY)
+    let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: reorderedPositions[answers.indexOf(n)].x, bottom: reorderedPositions[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false } });
 
     // const reorderedAsteroids: Array<Asteroid> = this.reorderAst.reorderAnswers(asteroidArray);
     return asteroidArray //  asteroidArray
