@@ -30,6 +30,7 @@ export class AsteroidComponent implements OnInit {
   }
   onClickAsteroid() {
     if (this.astData.explode) return
+
     this.clickAstro.emit({ index: this.astData.index })
   }
   getLeft() {

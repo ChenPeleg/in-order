@@ -1,8 +1,11 @@
 export class AsteroidPosition {
 
-    public positionsXY: Array<{ x: number, y: number }>
+    x: number;
+    y: number;
+    num?: number;
 
-    constructor(positionsXY = [{ x: 0, y: 0 }]) {
-        this.positionsXY = positionsXY
+    constructor(x: 0, y: 0) {
+        this.x = x;
+        this.y = y;
     }
 } 

@@ -62,17 +62,15 @@ export class GameComponent implements OnInit {
   setAstroidData(): Array<Asteroid> {
     const answers = this.gamecontrollerService.getCurrentAnswers()
 
-    const { positionsXY }: AsteroidPosition = this.asteroidPositionSrv.setPositionList(answers.length);
+    const positionsXY: Array<AsteroidPosition> = this.asteroidPositionSrv.setPositionList(answers.length);
 
     let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: positionsXY[answers.indexOf(n)].x, bottom: positionsXY[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false } });
 
-    const reorderedAsteroids: Array<Asteroid> = this.reorderAst.reorderAnswers(asteroidArray);
-    //console.log(asteroidArray, reorderedAsteroids)
-
-
-    return reorderedAsteroids //  asteroidArray
+    // const reorderedAsteroids: Array<Asteroid> = this.reorderAst.reorderAnswers(asteroidArray);
+    return asteroidArray //  asteroidArray
   }
   correctHandler(num: number): void {
+    console.log(num)
     this.explodeAsteroid(num)
     this.nextCorrect = this.nextCorrect + 1;
     while (this.nextCorrect < this.asteroids.length && this.asteroids[this.nextCorrect].destroy) {

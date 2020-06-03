@@ -13,12 +13,12 @@ export class AsteroidPositionService {
     if (num > 90) { num = 90 } else if (num < 10) { num = 10 }
     return num
   }
-  setPositionList(numOfasteroids: number, radius: number = 40): AsteroidPosition {
+  setPositionList(numOfasteroids: number, radius: number = 40): Array<AsteroidPosition> {
     const centerX = 50;
     const centerY = 50;
     let x_: number = 0;
     let y_: number = 0;
-    let positionsXY: Array<{ x: number, y: number }> = [];
+    let positionsXY: Array<AsteroidPosition> = [];
     const steps: number = numOfasteroids + 2 * Math.random();
     //  this helps the asteroiuds not to be in a mathamtical order like a clock but more randome. 
 
@@ -29,12 +29,12 @@ export class AsteroidPositionService {
       y_ = (centerY + radius * Math.sin(2 * Math.PI * i / steps)) + rnd;
       x_ = Math.round(this.preventOverflow(x_))
       y_ = Math.round(this.preventOverflow(y_))
-      positionsXY[i] = { x: x_, y: y_ }
+      positionsXY[i] = { x: x_, y: y_, num: i }
     }
     // for the asteroid in the center :
     const rnd = (Math.random() - 0.5) * 10
-    positionsXY[0] = { x: 50 + rnd, y: 50 + rnd }
+    positionsXY[0] = { x: Math.round(50 + rnd), y: Math.round(50 + rnd), num: 0 }
 
-    return { positionsXY }
+    return positionsXY
   }
 }
