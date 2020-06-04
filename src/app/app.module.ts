@@ -10,6 +10,7 @@ import { GamecontrollerService } from "./services/game-controller/gamecontroller
 import { LaserComponent } from './laser/laser.component';
 import { GamebarComponent } from './gamebar/gamebar.component';
 import { BigMessageComponent } from './big-message/big-message.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BigMessageComponent } from './big-message/big-message.component';
     ExplotionComponent,
     LaserComponent,
     GamebarComponent,
-    BigMessageComponent
+    BigMessageComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule

@@ -28,12 +28,21 @@ export class GamecontrollerService {
   getCurrentAnswers(): any {
     return [...data.questions[this.questionNum].answers]
   }
-  feedBackText(): string {
+  feedBackText(currentMistakes: number): string {
     const randGood = ["Very Good!", "Great!", "You're a champ!", "Amazing!", "Smart!"]
     const randBad = ["Next time...", "try again...", "Think again...", "Not exactly", "Smart!"]
-    const randAvrge = ["Almost..", "That was close.."]
-    const randAgain = ["two in a row!", "That was close.."]
-    return this.arrayRandom(randGood)
+    const randAvrge = ["Almost..", "That was close..", "Most of it was correct..."]
+    const randAgain = ["you're on a streak!", "How do you do it?", "Time after time!", "Born a winner!"]
+    let arrayOfFeeds: string[];
+    switch (currentMistakes) {
+      case 0:
+        arrayOfFeeds = randGood;
+        if ((this.questionNum > 1) && this.successArray[this.questionNum - 1] === 0) { arrayOfFeeds = randAgain; }
+        break;
+      case 1: arrayOfFeeds = randAvrge; break;
+      default: arrayOfFeeds = randBad;
+    }
+    return this.arrayRandom(arrayOfFeeds)
     return "Good!"
 
   }

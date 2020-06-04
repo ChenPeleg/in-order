@@ -15,7 +15,7 @@
             ]
         },
         "2": {
-            "text": "2. Click from big to small",
+            "text": "2. Click from lagrge to little",
             "answers": [
                 "tiger",
                 "cat",
@@ -23,11 +23,12 @@
             ]
         },
         "3": {
-            "text": "3. Click from big to small",
+            "text": "3. Click from short to tall",
             "answers": [
-                "man",
+                "chicken",
                 "child",
-                "chicken"
+                "man"
+
             ]
         },
         "4": {
@@ -39,15 +40,16 @@
             ]
         },
         "5": {
-            "text": "5. Click from big to small",
+            "text": "5. Click from strong to weak",
             "answers": [
-                "tree",
+                "elephant",
                 "dog",
+                "fly",
                 "ant"
             ]
         },
         "6": {
-            "text": "Click from big to small",
+            "text": "6.Click from big to tiny",
             "answers": [
                 "house",
                 "car",
@@ -55,15 +57,15 @@
             ]
         },
         "7": {
-            "text": "Click from big to small",
+            "text": "7.Click from simple to complex",
             "answers": [
-                "horse",
-                "computer",
-                "ant"
+                "rock",
+                "pen",
+                "computer"
             ]
         },
         "8": {
-            "text": "Click from big to small",
+            "text": "8.Click from big to small",
             "answers": [
                 "hotel",
                 "car",

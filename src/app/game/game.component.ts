@@ -91,7 +91,7 @@ export class GameComponent implements OnInit {
   feedbackHandler(): void {
     this.displayBigMessage = true;
     this.nextCorrect = 0;
-    this.feedbackMsg = this.gamecontrollerService.feedBackText()
+    this.feedbackMsg = this.gamecontrollerService.feedBackText(this.mistakes)
 
     setTimeout(() => {
       this.displayBigMessage = false;
