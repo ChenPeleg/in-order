@@ -4,9 +4,10 @@
     <div class="game-contatiner">
         Click from small to big
         <div class="asteroids-container">
-            <!-- <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"></app-asteroid>
-            <app-laser [laserData]="laserData"></app-laser> -->
-            <app-big-message></app-big-message>
+            <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"></app-asteroid>
+            <app-laser [laserData]="laserData"></app-laser>
+            <app-big-message [messageText]="feedbackMsg" *ngIf="displayBigMessage">
+            </app-big-message>
         </div>
 
     </div>

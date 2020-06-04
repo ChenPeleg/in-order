@@ -7,7 +7,7 @@ import { Laser } from "../models/laser.model";
 import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
 import { GamecontrollerService } from "../services/game-controller/gamecontroller.service"
 import { ReorderPositionsService } from "../services/reorder-positions/reorder-positions.service"
-import { BigMessageComponent } from "../big-message/big-message.component"
+// import { BigMessageComponent } from "../big-message/big-message.component"
 // import { ConsoleReporter } from 'jasmine';
 @Component({
   selector: 'app-game',
@@ -21,17 +21,19 @@ export class GameComponent implements OnInit {
   questionNumber: number
   currenQuestionText: string;
   nextCorrect: number;
-
+  feedbackMsg: string;
+  displayBigMessage: boolean;
   laserData: Laser;
+
   public innerWidth: any;
   public innerHeight: any;
 
   constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderPositionsService, private ReorderPositionsService: ReorderPositionsService) {
     this.questionNumber = 1;
     this.nextCorrect = 0;
-
+    this.feedbackMsg = "Almost!"
     this.laserData = { showLaser: false, laserX: 0, laserY: 0 }
-
+    this.displayBigMessage = false;
   }
   ngOnInit(): void {
     this.currenQuestionText = this.gamecontrollerService.getCurrentQuestion();

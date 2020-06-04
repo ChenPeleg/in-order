@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-big-message',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./big-message.component.scss']
 })
 export class BigMessageComponent implements OnInit {
+  @Input() messageText: string;
   fadeOut: boolean;
   constructor() { this.fadeOut = false }
 
