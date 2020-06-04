@@ -19,6 +19,8 @@
     font-family: "Quicksand";
     overflow: hidden;
     position: relative;
+    padding-left: 30%;
+    padding-right: 30%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -26,7 +28,7 @@
     z-index: 30;
     // background-color: rgba(0, 128, 0, 0.705) ;
     color: rgb(252, 248, 42);
-    font-size: 60px;
+    font-size: 75px;
     text-align: center;
     text-shadow: (-1 * $stroke-size2) (-1 *$stroke-size2) $blur-size2 $shadow-color2, $stroke-size2 $stroke-size2 $blur-size2 $shadow-color2, (-1 * $stroke-size2) $stroke-size2 $blur-size2 $shadow-color2, $stroke-size2 (-1 * $stroke-size2) $blur-size2 $shadow-color2, (-1 * $stroke-size1) (-1 *$stroke-size1) $blur-size1 $shadow-color1, $stroke-size1 $stroke-size1 $blur-size1 $shadow-color1, (-1 * $stroke-size1) $stroke-size1 $blur-size1 $shadow-color1, $stroke-size1 (-1 * $stroke-size1) $blur-size1 $shadow-color1;
     // transform-origin: 0 0;

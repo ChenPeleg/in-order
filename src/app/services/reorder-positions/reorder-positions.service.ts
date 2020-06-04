@@ -24,7 +24,7 @@ export class ReorderPositionsService {
     };
     const newAnswersObject: Array<AsteroidPosition> = [...unordered];
     newAnswersObject.sort(() => Math.random() - 0.5);
-    console.log(unordered)
+
     return wasReorderCompletely(newAnswersObject, unordered)
       ? newAnswersObject
       : this.reorderPositions(unordered);

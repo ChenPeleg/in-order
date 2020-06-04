@@ -24,6 +24,7 @@ export class GameComponent implements OnInit {
   feedbackMsg: string;
   displayBigMessage: boolean;
   laserData: Laser;
+  mistakes: number;
 
   public innerWidth: any;
   public innerHeight: any;
@@ -31,8 +32,10 @@ export class GameComponent implements OnInit {
   constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderPositionsService, private ReorderPositionsService: ReorderPositionsService) {
     this.questionNumber = 1;
     this.nextCorrect = 0;
+    this.mistakes = 0;
     this.feedbackMsg = "Almost!"
     this.laserData = { showLaser: false, laserX: 0, laserY: 0 }
+
     this.displayBigMessage = false;
   }
   ngOnInit(): void {
@@ -47,6 +50,7 @@ export class GameComponent implements OnInit {
   @HostListener('document:keyup', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     event.code === "Space" ? this.spacePressHandler() : null
+    event.code === "Digit1" ? this.asteroidClickHandler({ index: this.nextCorrect }) : null
   }
   asteroidClickHandler(clickData: { index: number }): void {
     if (clickData.index === this.nextCorrect) { this.correctHandler(clickData.index) } else { this.wrongHandler(clickData.index) }
@@ -67,36 +71,62 @@ export class GameComponent implements OnInit {
 
     const reorderedPositions: Array<AsteroidPosition> = this.ReorderPositionsService.reorderPositions(positionsXY);
     const popOrder = answers.map((n: any): number[] => answers.indexOf(n)).sort(() => Math.random() - 0.5);
-    console.log(popOrder)
+
     let asteroidArray: Array<Asteroid> = answers.map(n => { return { left: reorderedPositions[answers.indexOf(n)].x, bottom: reorderedPositions[answers.indexOf(n)].y, text: n, index: answers.indexOf(n), destroy: false, order: popOrder[answers.indexOf(n)] } });
+
     return asteroidArray
   }
   correctHandler(num: number): void {
-    console.log(num)
+
     this.explodeAsteroid(num)
     this.nextCorrect = this.nextCorrect + 1;
     while (this.nextCorrect < this.asteroids.length && this.asteroids[this.nextCorrect].destroy) {
       this.nextCorrect++
     }
-    if (this.nextCorrect === this.asteroids.length) {
-      alert('next Question')
+    if (this.nextCorrect >= this.asteroids.length) {
+      setTimeout(() => { this.feedbackHandler() }, 1000)
+
     }
   }
+  feedbackHandler(): void {
+    this.displayBigMessage = true;
+    this.nextCorrect = 0;
+    this.feedbackMsg = this.gamecontrollerService.feedBackText()
+
+    setTimeout(() => {
+      this.displayBigMessage = false;
+      this.nextQuestionHandler();
+    }, 2000)
+
+  }
+  nextQuestionHandler(): void {
+
+    this.gamecontrollerService.setNextQuestion(this.mistakes);
+    this.asteroids = this.setAstroidData();
+    this.mistakes = 0;
+    this.currenQuestionText = this.gamecontrollerService.getCurrentQuestion();
+  }
   wrongHandler(num: number): void {
+    this.mistakes = this.mistakes + 1
     if (this.asteroids[num].warm) {
       this.explodeAsteroid(num)
     } else {
       this.asteroids[num].warm = true
     }
   }
-  explodeAsteroid(num: number) {
-    this.asteroids[num].destroy = true
+  explodeAsteroid(num: number): void {
+    if (!this.asteroids[num]) return;
+    this.asteroids[num].destroy = true;
     this.laserData.laserFiring = true;
     setTimeout(() => {
+      if (!this.asteroids[num]) return;
       this.laserData.laserFiring = false;
       this.asteroids[num].explode = true
-      setTimeout(() => { this.asteroids[num].removed = true }, 800)
-    }, 600)
+      setTimeout(() => {
+        if (!this.asteroids[num]) return;
+        this.asteroids[num].removed = true
+      }, 800)
+    }, 300)
   }
 
 }
