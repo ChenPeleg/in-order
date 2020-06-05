@@ -2,7 +2,7 @@
 
     <div class="summary text">
         <h2>Game summary</h2>
-        Very good! youe have finished the game!</div>
+        {{summup.text}}</div>
     <div>
         <table class="summary summary-table ">
             <thead>
@@ -15,20 +15,19 @@
             <tbody>
                 <tr>
                     <td>without errors</td>
-                    <td>{{pre}}</td>
-                    <td>{{pre}}</td>
-                    <!-- <td>{{num.q0}}</td>
-                    <td>{{pre.q0}}</td> -->
+                    <td>{{summup.q0}}</td>
+                    <td>{{summup.p0 | percent}}</td>
+
                 </tr>
                 <tr>
                     <td>two mistakes</td>
-                    <!-- <td>{{num.q1}}</td>
-                    <td>{{pre.q1}} </td> -->
+                    <td>{{summup.q1}}</td>
+                    <td>{{summup.p1 | percent}}</td>
                 </tr>
                 <tr>
                     <td>more than two mistakes</td>
-                    <!-- <td>{{num.q23}}</td>
-                    <td>{{pre.q23}}</td> -->
+                    <td>{{summup.q23}}</td>
+                    <td>{{summup.p23| percent}}</td>
                 </tr>
             </tbody>
         </table>

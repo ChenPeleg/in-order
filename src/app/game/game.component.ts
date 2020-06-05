@@ -13,7 +13,7 @@ import { ReorderPositionsService } from "../services/reorder-positions/reorder-p
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  providers: [AsteroidPositionService, ReorderPositionsService]
+  providers: [AsteroidPositionService, ReorderPositionsService, GamecontrollerService]
 })
 export class GameComponent implements OnInit {
 

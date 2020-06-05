@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { SummaryModel } from "../../models/summary.model"
 @Injectable({
   providedIn: 'root'
 })
@@ -19,5 +19,8 @@ export class SummaryService {
     }
 
     return { mistakesObject, numOfquestions };
+  }
+  getSummary(): SummaryModel {
+    return { q0: 3, q1: 1, q23: 100, p0: 0, p1: 1, p23: 0, text: ["Very Good!", "you've finished the game"] }
   }
 }

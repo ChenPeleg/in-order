@@ -5,4 +5,5 @@ export interface SummaryModel {
     p0: number
     p1: number
     p23: number
+    text?: string[];
 }
