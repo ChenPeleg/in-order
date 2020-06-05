@@ -5,6 +5,7 @@
 
 .summary-wrappeer {
     // background-color: rgb(252, 248, 42);
+    padding-top: 30px;
     position: relative;
     text-align: center;
     margin: auto auto;
@@ -22,11 +23,8 @@
     $blur-size2: 2px;
     $shadow-color2: #0a14a7;
     font-family: "Quicksand";
+    padding: 25px;
     overflow: hidden;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     z-index: 30;
     // background-color: rgba(0, 128, 0, 0.705) ;
     color: rgb(252, 248, 42);
