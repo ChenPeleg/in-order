@@ -4,6 +4,7 @@
 }
 
 .question {
+    display: inline-block;
     $stroke-size1: 3px;
     $blur-size1: 4px;
     $shadow-color1: #ffffff;
@@ -11,11 +12,9 @@
     $blur-size2: 2px;
     $shadow-color2: #0a14a7;
     font-family: "Quicksand";
-    // overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    width: 70%;
+    left: 15%;
+    position: relative;
     z-index: 30;
     // background-color: rgba(0, 128, 0, 0.705) ;
     color: rgb(252, 248, 42);

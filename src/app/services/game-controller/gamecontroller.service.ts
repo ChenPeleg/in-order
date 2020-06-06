@@ -4,10 +4,14 @@ import *  as  data from '../../../assets/questions.json';
   providedIn: 'root'
 })
 export class GamecontrollerService {
+  soundOn: boolean;
   questionNum: number;
   successArray: number[];
   feedbackHistory: string[];
-  constructor() { this.questionNum = 1, this.successArray = [], this.feedbackHistory = [] }
+  constructor() {
+    this.questionNum = 1, this.successArray = [], this.feedbackHistory = []
+    this.soundOn = true;
+  }
   private arrayRandom(arr: Array<string>): string {
     const randomElement = (): string => arr[Math.floor(Math.random() * arr.length)];
     let feedBack: string;
@@ -16,6 +20,12 @@ export class GamecontrollerService {
       if (feedBack !== this.feedbackHistory[this.questionNum + 1]) { break };
     }
     return feedBack
+  }
+  toggleSound() {
+    this.soundOn = !this.soundOn;
+  }
+  getIsSoundOn(): boolean {
+    return this.soundOn
   }
   setNextQuestion(mistakes: number): boolean {
     this.successArray[this.questionNum] = mistakes;

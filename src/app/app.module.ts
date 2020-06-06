@@ -12,6 +12,8 @@ import { GamebarComponent } from './gamebar/gamebar.component';
 import { BigMessageComponent } from './big-message/big-message.component';
 import { SummaryComponent } from './summary/summary.component';
 import { SpreadPipe } from './summary/spread.pipe';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { SoundBtnComponent } from './top-bar/sound-btn/sound-btn.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SpreadPipe } from './summary/spread.pipe';
     GamebarComponent,
     BigMessageComponent,
     SummaryComponent,
-    SpreadPipe
+    SpreadPipe,
+    TopBarComponent,
+    SoundBtnComponent
   ],
   imports: [
     BrowserModule

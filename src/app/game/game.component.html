@@ -1,5 +1,8 @@
 <div class="board-container">
-    <app-question *ngIf="gameStatus === 'play'" [questionText]="currenQuestionText"></app-question>
+    <app-top-bar>
+        <app-question *ngIf="gameStatus === 'play'" [questionText]="currenQuestionText"></app-question>
+    </app-top-bar>
+
     <app-space></app-space>
     <div class="game-contatiner" [ngSwitch]="gameStatus">
         <app-summary *ngSwitchCase="'summary'" (clickReplay)="replayClickHandler($event)"> </app-summary>
