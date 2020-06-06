@@ -21,12 +21,7 @@ export class GamecontrollerService {
     }
     return feedBack
   }
-  toggleSound() {
-    this.soundOn = !this.soundOn;
-  }
-  getIsSoundOn(): boolean {
-    return this.soundOn
-  }
+ 
   setNextQuestion(mistakes: number): boolean {
     this.successArray[this.questionNum] = mistakes;
     console.log(this.successArray)

@@ -7,13 +7,14 @@ import { Laser } from "../models/laser.model";
 import { LaserPositionService } from "../services/laser-position-service/laser-position.service";
 import { GamecontrollerService } from "../services/game-controller/gamecontroller.service"
 import { ReorderPositionsService } from "../services/reorder-positions/reorder-positions.service"
+import { SoundEffectService } from "../services/soundEffect/sound-effect.service"
 // import { BigMessageComponent } from "../big-message/big-message.component"
 // import { ConsoleReporter } from 'jasmine';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  providers: [AsteroidPositionService, ReorderPositionsService, GamecontrollerService]
+  providers: [AsteroidPositionService, ReorderPositionsService, GamecontrollerService, SoundEffectService]
 })
 export class GameComponent implements OnInit {
 
@@ -30,7 +31,7 @@ export class GameComponent implements OnInit {
   public innerWidth: any;
   public innerHeight: any;
 
-  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderPositionsService, private ReorderPositionsService: ReorderPositionsService) {
+  constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderPositionsService, private ReorderPositionsService: ReorderPositionsService, private SoundEffectService: SoundEffectService) {
     this.gameStatus = "play"
     this.questionNumber = 1;
     this.nextCorrect = 0;
@@ -61,6 +62,7 @@ export class GameComponent implements OnInit {
   }
 
   asteroidClickHandler(clickData: { index: number }): void {
+    this.SoundEffectService.playAudio('laser')
     if (clickData.index === this.nextCorrect) { this.correctHandler(clickData.index) } else { this.wrongHandler(clickData.index) }
   }
   @HostListener('document:mousemove', ['$event'])
@@ -100,6 +102,14 @@ export class GameComponent implements OnInit {
     this.displayBigMessage = true;
     this.nextCorrect = 0;
     this.feedbackMsg = this.gamecontrollerService.feedBackText(this.mistakes)
+    let soundFeed: string;
+    if (this.mistakes === 0) {
+      soundFeed = "good"
+    } else if (this.mistakes === 1) {
+      soundFeed = "average"
+    } else { soundFeed = "bad" }
+
+    this.SoundEffectService.playAudio(soundFeed)
 
     setTimeout(() => {
       this.displayBigMessage = false;
