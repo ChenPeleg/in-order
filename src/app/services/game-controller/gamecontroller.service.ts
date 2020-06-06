@@ -7,7 +7,7 @@ export class GamecontrollerService {
   questionNum: number;
   successArray: number[];
   feedbackHistory: string[];
-  constructor() { this.questionNum = 1, this.successArray = [, 1, 4, 1, 2, 1, 2, 1, 1, 0], this.feedbackHistory = [] }
+  constructor() { this.questionNum = 1, this.successArray = [], this.feedbackHistory = [] }
   private arrayRandom(arr: Array<string>): string {
     const randomElement = (): string => arr[Math.floor(Math.random() * arr.length)];
     let feedBack: string;
@@ -17,10 +17,23 @@ export class GamecontrollerService {
     }
     return feedBack
   }
-  setNextQuestion(mistakes: number): any {
+  setNextQuestion(mistakes: number): boolean {
     this.successArray[this.questionNum] = mistakes;
+    console.log(this.successArray)
     this.questionNum = this.questionNum + 1;
-
+    if (data.questions[this.questionNum]) {
+      return true
+    } else {
+      // this.questionNum = 1;
+      // this.successArray = [];
+      // this.feedbackHistory = [];
+      return false
+    }
+  }
+  setNewGame(): void {
+    this.questionNum = 0;
+    this.successArray = [];
+    this.feedbackHistory = [];
   }
   getCurrentQuestion(): any {
     return data.questions[this.questionNum].text

@@ -71,6 +71,7 @@ export class SummaryService {
   getSummary(): SummaryModel {
     const pre = (part: number, base: number): number => Math.floor(part / base * 100)
     const success = this.GamecontrollerService.getCurrentSuccess();
+    console.log(success)
 
     const numOfQ: number = success.filter(el => true).length
     const succByQ: SuccesByQuest = this.createSummaryObject(success)

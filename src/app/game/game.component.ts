@@ -54,6 +54,11 @@ export class GameComponent implements OnInit {
     event.code === "Space" ? this.spacePressHandler() : null
     event.code === "Digit1" ? this.asteroidClickHandler({ index: this.nextCorrect }) : null
   }
+  replayClickHandler(is: boolean) {
+    this.gamecontrollerService.setNewGame();
+    this.gameStatus = "play";
+    this.nextQuestionHandler()
+  }
   asteroidClickHandler(clickData: { index: number }): void {
     if (clickData.index === this.nextCorrect) { this.correctHandler(clickData.index) } else { this.wrongHandler(clickData.index) }
   }
@@ -103,10 +108,16 @@ export class GameComponent implements OnInit {
   }
   nextQuestionHandler(): void {
 
-    this.gamecontrollerService.setNextQuestion(this.mistakes);
-    this.asteroids = this.setAstroidData();
+    const hasNext: boolean = this.gamecontrollerService.setNextQuestion(this.mistakes);
+    if (!hasNext) {
+      this.gameStatus = 'summary'
+    } else {
+      this.asteroids = this.setAstroidData();
+      this.currenQuestionText = this.gamecontrollerService.getCurrentQuestion();
+    }
+
     this.mistakes = 0;
-    this.currenQuestionText = this.gamecontrollerService.getCurrentQuestion();
+
   }
   wrongHandler(num: number): void {
     this.mistakes = this.mistakes + 1

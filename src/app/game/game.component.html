@@ -2,7 +2,7 @@
     <app-question *ngIf="gameStatus === 'play'" [questionText]="currenQuestionText"></app-question>
     <app-space></app-space>
     <div class="game-contatiner" [ngSwitch]="gameStatus">
-        <app-summary *ngSwitchCase="'summary'"></app-summary>
+        <app-summary *ngSwitchCase="'summary'" (clickReplay)="replayClickHandler($event)"> </app-summary>
         <div *ngSwitchCase="'play'" class="asteroids-container">
             <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"></app-asteroid>
             <app-laser [laserData]="laserData"></app-laser>
