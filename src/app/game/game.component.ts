@@ -53,6 +53,7 @@ export class GameComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     event.code === "Space" ? this.spacePressHandler() : null
     event.code === "Digit1" ? this.asteroidClickHandler({ index: this.nextCorrect }) : null
+
   }
   replayClickHandler(is: boolean) {
     this.gamecontrollerService.setNewGame();
