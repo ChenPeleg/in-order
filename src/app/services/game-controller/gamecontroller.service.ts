@@ -31,7 +31,7 @@ export class GamecontrollerService {
     }
   }
   setNewGame(): void {
-    this.questionNum = 0;
+    this.questionNum = 1;
     this.successArray = [];
     this.feedbackHistory = [];
   }
