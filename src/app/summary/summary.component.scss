@@ -49,6 +49,32 @@
     ;
 }
 
+.replay-btn {
+    margin-top: 25px;
+    cursor: pointer;
+    $stroke-size1: 1px;
+    $blur-size1: 12px;
+    $shadow-color1: #ffffffaf;
+    $stroke-size2: 2px;
+    $blur-size2: 2px;
+    $shadow-color2: #0a14a7;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24px;
+    border-radius: 20px;
+    background-color: rgba(228, 228, 12, 0.644);
+    box-shadow: (-1 * $stroke-size2) (-1 *$stroke-size2) $blur-size2 $shadow-color2, $stroke-size2 $stroke-size2 $blur-size2 $shadow-color2, (-1 * $stroke-size2) $stroke-size2 $blur-size2 $shadow-color2, $stroke-size2 (-1 * $stroke-size2) $blur-size2 $shadow-color2, (-1 * $stroke-size1) (-1 *$stroke-size1) $blur-size1 $shadow-color1, $stroke-size1 $stroke-size1 $blur-size1 $shadow-color1, (-1 * $stroke-size1) $stroke-size1 $blur-size1 $shadow-color1, $stroke-size1 (-1 * $stroke-size1) $blur-size1 $shadow-color1;
+    transition: transform 0.1s ease-in;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.replay-btn:focus {
+    outline: none;
+}
+
 .summary-table {
     position: relative;
     margin: auto auto;

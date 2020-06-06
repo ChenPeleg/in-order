@@ -14,11 +14,11 @@ export class SummaryComponent implements OnInit {
   pre: number;
   pre1: number;
   constructor(private SummaryService: SummaryService) {
-    this.summup = SummaryService.getSummary()
-
+    this.summup = this.SummaryService.getSummary()
   }
 
   ngOnInit(): void {
+
   }
 
 }

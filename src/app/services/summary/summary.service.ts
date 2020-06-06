@@ -24,12 +24,14 @@ export class SummaryService {
     return mistakesObject;
   }
   roundTo100(mObj: SuccesByPrecent): SuccesByPrecent {
+
     const values = Object.values(mObj);
-    if (
-      values.reduce((a, b) => {
-        return a + b;
-      }, 0) === 100
-    ) {
+
+    const total: number = values.reduce((a, b) => {
+      return a + b;
+    }, 0)
+
+    if (total === 100 || total > 300) {
       return mObj;
     } else {
       const min = Math.min(...values.filter((el) => el > 0));
@@ -43,10 +45,33 @@ export class SummaryService {
   }
 
 
+  verbalAssesment(result: SuccesByPrecent): string {
 
+    let grade: string;
+    if (result.p0 > 75) grade = "A";
+    if (result.p0 <= 75 && result.p0 > 50) grade = "B";
+    if (result.p0 <= 50 && result.p0 > 25) grade = "C";
+    if (result.p0 <= 25) grade = "D";
+    switch (grade) {
+      case "A":
+        return "You did very well!"; break;
+      case "B":
+        return "You did OK!"; break;
+      case "C":
+        return "You answered part of the questions correctly."; break;
+      case "D":
+        return "You answered only a small part of the questions correctly."; break;
+      default:
+        return "You did OK!"; break;
+
+
+    }
+
+  }
   getSummary(): SummaryModel {
-    const pre = (part: number, base: number): number => Math.round(part / base * 100)
+    const pre = (part: number, base: number): number => Math.floor(part / base * 100)
     const success = this.GamecontrollerService.getCurrentSuccess();
+
     const numOfQ: number = success.filter(el => true).length
     const succByQ: SuccesByQuest = this.createSummaryObject(success)
     const succesbyPrecentage: SuccesByPrecent = {
@@ -54,7 +79,10 @@ export class SummaryService {
       p1: pre(succByQ.q1, numOfQ),
       p23: pre(succByQ.q23, numOfQ),
     }
-    console.log(succesbyPrecentage)
-    return { q0: 3, q1: 1, q23: 100, p0: 0, p1: 1, p23: 0, text: ["Very Good!", "you've finished the game", "you are amazing!", "I love you"] }
+    const precentRoundTo100: SuccesByPrecent = this.roundTo100(succesbyPrecentage)
+    const assesment = this.verbalAssesment(precentRoundTo100)
+    let textArray: string[] = ["You've finished the game!", assesment, "You can practice this game again by pressing \"Replay\"."]
+
+    return { ...precentRoundTo100, ...succByQ, text: textArray }
   }
 }

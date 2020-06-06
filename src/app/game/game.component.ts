@@ -25,11 +25,13 @@ export class GameComponent implements OnInit {
   displayBigMessage: boolean;
   laserData: Laser;
   mistakes: number;
+  gameStatus: string;
 
   public innerWidth: any;
   public innerHeight: any;
 
   constructor(private asteroidPositionSrv: AsteroidPositionService, private laserPositionSrv: LaserPositionService, private gamecontrollerService: GamecontrollerService, private reorderAst: ReorderPositionsService, private ReorderPositionsService: ReorderPositionsService) {
+    this.gameStatus = "play"
     this.questionNumber = 1;
     this.nextCorrect = 0;
     this.mistakes = 0;

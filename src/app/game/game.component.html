@@ -1,13 +1,14 @@
 <div class="board-container">
-    <app-question [questionText]="currenQuestionText"></app-question>
+    <app-question *ngIf="gameStatus === 'play'" [questionText]="currenQuestionText"></app-question>
     <app-space></app-space>
-    <div class="game-contatiner">
-        <app-summary></app-summary>
-        <div class="asteroids-container">
-            <!-- <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"></app-asteroid>
+    <div class="game-contatiner" [ngSwitch]="gameStatus">
+        <app-summary *ngSwitchCase="'summary'"></app-summary>
+        <div *ngSwitchCase="'play'" class="asteroids-container">
+            <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"></app-asteroid>
             <app-laser [laserData]="laserData"></app-laser>
+
             <app-big-message [messageText]="feedbackMsg" *ngIf="displayBigMessage">
-            </app-big-message> -->
+            </app-big-message>
 
         </div>
 

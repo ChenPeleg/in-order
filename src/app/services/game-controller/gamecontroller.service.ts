@@ -7,7 +7,7 @@ export class GamecontrollerService {
   questionNum: number;
   successArray: number[];
   feedbackHistory: string[];
-  constructor() { this.questionNum = 1, this.successArray = [, 3, 4, 0, 0], this.feedbackHistory = [] }
+  constructor() { this.questionNum = 1, this.successArray = [, 1, 4, 1, 2, 1, 2, 1, 1, 0], this.feedbackHistory = [] }
   private arrayRandom(arr: Array<string>): string {
     const randomElement = (): string => arr[Math.floor(Math.random() * arr.length)];
     let feedBack: string;
@@ -20,7 +20,7 @@ export class GamecontrollerService {
   setNextQuestion(mistakes: number): any {
     this.successArray[this.questionNum] = mistakes;
     this.questionNum = this.questionNum + 1;
-    console.log(this.successArray)
+
   }
   getCurrentQuestion(): any {
     return data.questions[this.questionNum].text

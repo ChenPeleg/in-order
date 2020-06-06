@@ -2,8 +2,7 @@
 
     <div class="summary">
         <h2 class="head">Game summary</h2>
-        <div class="text">
-            {{summup.text | spread}}
+        <div class="text">{{summup.text | spread}}
         </div>
 
     </div>
@@ -20,21 +19,21 @@
                 <tr>
                     <td>without errors</td>
                     <td>{{summup.q0}}</td>
-                    <td>{{summup.p0 | percent}}</td>
+                    <td>{{summup.p0}}%</td>
 
                 </tr>
                 <tr>
-                    <td>two mistakes</td>
+                    <td>one mistakes</td>
                     <td>{{summup.q1}}</td>
-                    <td>{{summup.p1 | percent}}</td>
+                    <td>{{summup.p1}}%</td>
                 </tr>
                 <tr>
-                    <td>more than two mistakes</td>
+                    <td>two or more mistakes</td>
                     <td>{{summup.q23}}</td>
-                    <td>{{summup.p23| percent}}</td>
+                    <td>{{summup.p23}}%</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <button>Replay</button>
+    <button class=" summary replay-btn">Replay</button>
 </div>
