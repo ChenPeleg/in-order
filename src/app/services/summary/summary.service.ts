@@ -55,6 +55,6 @@ export class SummaryService {
       p23: pre(succByQ.q23, numOfQ),
     }
     console.log(succesbyPrecentage)
-    return { q0: 3, q1: 1, q23: 100, p0: 0, p1: 1, p23: 0, text: ["Very Good!", "you've finished the game"] }
+    return { q0: 3, q1: 1, q23: 100, p0: 0, p1: 1, p23: 0, text: ["Very Good!", "you've finished the game", "you are amazing!", "I love you"] }
   }
 }

@@ -1,8 +1,11 @@
 <div class="summary-wrappeer">
 
-    <div class="summary text">
-        <h2>Game summary</h2>
-        {{summup.text}}
+    <div class="summary">
+        <h2 class="head">Game summary</h2>
+        <div class="text">
+            {{summup.text | spread}}
+        </div>
+
     </div>
     <div>
         <table class="summary summary-table ">
@@ -33,4 +36,5 @@
             </tbody>
         </table>
     </div>
+    <button>Replay</button>
 </div>

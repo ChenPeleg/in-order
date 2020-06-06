@@ -11,6 +11,7 @@ import { LaserComponent } from './laser/laser.component';
 import { GamebarComponent } from './gamebar/gamebar.component';
 import { BigMessageComponent } from './big-message/big-message.component';
 import { SummaryComponent } from './summary/summary.component';
+import { SpreadPipe } from './summary/spread.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SummaryComponent } from './summary/summary.component';
     LaserComponent,
     GamebarComponent,
     BigMessageComponent,
-    SummaryComponent
+    SummaryComponent,
+    SpreadPipe
   ],
   imports: [
     BrowserModule
