@@ -1,21 +1,22 @@
 <div class="board-container">
-    <app-top-bar>
-        <app-question *ngIf="gameStatus === 'play'" [questionText]="currenQuestionText"></app-question>
-    </app-top-bar>
+  <app-top-bar>
+    <app-question *ngIf="gameStatus === 'play'" [questionText]="currentQuestionText"></app-question>
+  </app-top-bar>
 
-    <app-space></app-space>
-    <div class="game-contatiner" [ngSwitch]="gameStatus">
-        <app-summary *ngSwitchCase="'summary'" (clickReplay)="replayClickHandler($event)"> </app-summary>
-        <div *ngSwitchCase="'play'" class="asteroids-container">
-            <app-asteroid *ngFor="let asteroid of asteroids" [astData]="asteroid" (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"></app-asteroid>
-            <app-laser [laserData]="laserData"></app-laser>
+  <app-space></app-space>
+  <div [ngSwitch]="gameStatus" class="game-contatiner">
+    <app-summary (clickReplay)="replayClickHandler($event)" *ngSwitchCase="'summary'"></app-summary>
+    <div *ngSwitchCase="'play'" class="asteroids-container">
+      <app-asteroid (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)" *ngFor="let asteroid of asteroids"
+                    [astData]="asteroid"></app-asteroid>
+      <app-laser [laserData]="laserData"></app-laser>
 
-            <app-big-message [messageText]="feedbackMsg" *ngIf="displayBigMessage">
-            </app-big-message>
-
-        </div>
+      <app-big-message *ngIf="displayBigMessage" [messageText]="feedbackMsg">
+      </app-big-message>
 
     </div>
+
+  </div>
 
 
 </div>
