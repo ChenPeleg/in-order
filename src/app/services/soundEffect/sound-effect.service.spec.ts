@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { SoundEffectService } from './sound-effect.service';
+import {SoundEffectService} from './sound-effect.service';
 
 describe('SoundEffectService', () => {
   let service: SoundEffectService;

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LaserComponent } from './laser.component';
+import {LaserComponent} from './laser.component';
 
 describe('LaserComponent', () => {
   let component: LaserComponent;
@@ -8,9 +8,9 @@ describe('LaserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LaserComponent ]
-    })
-    .compileComponents();
+                                     declarations: [LaserComponent]
+                                   })
+           .compileComponents();
   }));
 
   beforeEach(() => {

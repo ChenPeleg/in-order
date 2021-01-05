@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AsteroidPositionService } from './asteroid-position.service';
+import {AsteroidPositionService} from './asteroid-position.service';
 
 describe('AsteroidPositionService', () => {
   let service: AsteroidPositionService;

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BigMessageComponent } from './big-message.component';
+import {BigMessageComponent} from './big-message.component';
 
 describe('BigMessageComponent', () => {
   let component: BigMessageComponent;
@@ -8,9 +8,9 @@ describe('BigMessageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BigMessageComponent ]
-    })
-    .compileComponents();
+                                     declarations: [BigMessageComponent]
+                                   })
+           .compileComponents();
   }));
 
   beforeEach(() => {

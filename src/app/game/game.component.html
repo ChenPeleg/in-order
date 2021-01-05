@@ -7,7 +7,8 @@
   <div [ngSwitch]="gameStatus" class="game-contatiner">
     <app-summary (clickReplay)="replayClickHandler($event)" *ngSwitchCase="'summary'"></app-summary>
     <div *ngSwitchCase="'play'" class="asteroids-container">
-      <app-asteroid (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)" *ngFor="let asteroid of asteroids"
+      <app-asteroid (clickAstro)="asteroidClickHandler($event)" (hoverAstro)="asteroidHoverHandler($event)"
+                    *ngFor="let asteroid of asteroids"
                     [astData]="asteroid"></app-asteroid>
       <app-laser [laserData]="laserData"></app-laser>
 

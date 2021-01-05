@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GamebarComponent } from './gamebar.component';
+import {GamebarComponent} from './gamebar.component';
 
 describe('GamebarComponent', () => {
   let component: GamebarComponent;
@@ -8,9 +8,9 @@ describe('GamebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GamebarComponent ]
-    })
-    .compileComponents();
+                                     declarations: [GamebarComponent]
+                                   })
+           .compileComponents();
   }));
 
   beforeEach(() => {

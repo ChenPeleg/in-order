@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { LaserPositionService } from './laser-position.service';
+import {LaserPositionService} from './laser-position.service';
 
 describe('LaserPositionService', () => {
   let service: LaserPositionService;

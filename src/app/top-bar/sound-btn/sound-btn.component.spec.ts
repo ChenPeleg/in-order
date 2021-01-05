@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SoundBtnComponent } from './sound-btn.component';
+import {SoundBtnComponent} from './sound-btn.component';
 
 describe('SoundBtnComponent', () => {
   let component: SoundBtnComponent;
@@ -8,9 +8,9 @@ describe('SoundBtnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SoundBtnComponent ]
-    })
-    .compileComponents();
+                                     declarations: [SoundBtnComponent]
+                                   })
+           .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,5 +1,9 @@
-<div class="asteroidWrapper" [ngClass]="{popasteroid: isPoped}" (click)="onClickAsteroid()" [ngStyle]="{left: getLeft(), bottom:getBottom(),display: astData.removed ? 'none' : 'inline-block'}" (mouseover)="mouseEnterAsteroid($event)" (mouseout)="mouseExitAsteroid($event)">
-    <img draggable="false" class="asteroidImage spin" [ngClass]="{reversspin  : isReversed}" [style.animation-duration]="rotationSpeed" [src]="imageSrc" alt="asteroid" [ngClass]="{explode:astData.explode,destroyed:astData.destroy,warm: astData.warm}">
-    <div class="asteroid-text" [ngClass]="{explode:astData.explode}">{{astData.text}}</div>
-    <app-explotion *ngIf="astData.explode"></app-explotion>
+<div (click)="onClickAsteroid()" (mouseout)="mouseExitAsteroid($event)" (mouseover)="mouseEnterAsteroid($event)"
+     [ngClass]="{popasteroid: isPoped}"
+     [ngStyle]="{left: getLeft(), bottom:getBottom(),display: astData.removed ? 'none' : 'inline-block'}" class="asteroidWrapper">
+  <img [ngClass]="{reversspin  : isReversed}" [ngClass]="{explode:astData.explode,destroyed:astData.destroy,warm: astData.warm}" [src]="imageSrc"
+       [style.animation-duration]="rotationSpeed" alt="asteroid" class="asteroidImage spin"
+       draggable="false">
+  <div [ngClass]="{explode:astData.explode}" class="asteroid-text">{{astData.text}}</div>
+  <app-explotion *ngIf="astData.explode"></app-explotion>
 </div>

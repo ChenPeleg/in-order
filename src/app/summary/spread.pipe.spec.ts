@@ -1,4 +1,4 @@
-import { SpreadPipe } from './spread.pipe';
+import {SpreadPipe} from './spread.pipe';
 
 describe('SpreadPipe', () => {
   it('create an instance', () => {
