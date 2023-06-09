@@ -35,6 +35,29 @@
             "scripts": []
           },
           "configurations": {
+            "pages": {
+              "outputPath": "build",
+              "baseHref": "https://chenpeleg.github.io/in-order/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4000kb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "production": {
               "budgets": [
                 {
