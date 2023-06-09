@@ -22,7 +22,7 @@ export class AsteroidComponent implements OnInit {
   public readonly showDelay: number = 150;
 
   constructor() {
-    this.astSrc = ['../../assets/images/astro (', '', ').png'];
+    this.astSrc = ['assets/images/astro (', '', ').png'];
     this.isPoped = false;
   }
 
