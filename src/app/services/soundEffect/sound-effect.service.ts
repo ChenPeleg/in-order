@@ -13,12 +13,12 @@ export class SoundEffectService {
 
   toggleSound(): boolean {
     this.soundOn = !this.soundOn;
-    console.log('toggle', this.soundOn);
+
     return this.soundOn;
   }
 
   getIsSoundOn(): boolean {
-    console.log('getis', this.soundOn);
+
     return this.soundOn;
   }
 
@@ -43,7 +43,7 @@ export class SoundEffectService {
     ;
     const file = this.getSound(snd);
     let audio = new Audio();
-    audio.src = `assets/audio/${file}.mp3`;
+    audio.src = `../../assets/audio/${file}.mp3`;
     audio.load();
     audio.play();
   }

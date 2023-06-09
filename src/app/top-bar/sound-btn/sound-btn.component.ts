@@ -9,8 +9,8 @@ import {SoundEffectService} from '../../services/soundEffect/sound-effect.servic
            })
 export class SoundBtnComponent implements OnInit {
 
-  soundOnImage: string = 'assets/images/volumeon.png';
-  soundOffImage: string = 'assets/images/volumeoff.png';
+  soundOnImage: string = '/assets/images/volumeon.png';
+  soundOffImage: string = '/assets/images/volumeoff.png';
   soundIsOn: boolean =true;
 
   constructor(private SoundEffectService: SoundEffectService) { }
