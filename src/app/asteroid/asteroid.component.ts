@@ -82,6 +82,7 @@ export class AsteroidComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageSrc = this.getImg();
+    console.log(this.imageSrc)
     this.isReversed = this.getRotationDir();
     this.rotationSpeed = this.getRotationspeed();
     setTimeout(() => { this.isPoped = true; }, ((this.astData?.order || 1) * this.showDelay));

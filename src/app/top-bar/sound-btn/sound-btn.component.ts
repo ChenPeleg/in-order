@@ -16,6 +16,7 @@ export class SoundBtnComponent implements OnInit {
   constructor(private SoundEffectService: SoundEffectService) { }
 
   clickSound() {
+    console.log(this.soundOnImage,this.soundOffImage)
     this.soundIsOn = this.SoundEffectService.toggleSound();
 
   }
