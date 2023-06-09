@@ -1,13 +1,16 @@
 import {async, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-                                     declarations: [
-                                       AppComponent
-                                     ],
-                                   }).compileComponents();
+      declarations: [
+        AppComponent
+      ],
+      imports: [BrowserModule, HttpClientModule]
+    }).compileComponents();
   }));
 
   it('should create the app', () => {

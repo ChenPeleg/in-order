@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SummaryComponent} from './summary.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
@@ -8,9 +10,10 @@ describe('SummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-                                     declarations: [SummaryComponent]
-                                   })
-           .compileComponents();
+      declarations: [SummaryComponent],
+      imports: [BrowserModule, HttpClientModule]
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {

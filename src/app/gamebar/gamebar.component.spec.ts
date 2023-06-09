@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {GamebarComponent} from './gamebar.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('GamebarComponent', () => {
   let component: GamebarComponent;
@@ -8,10 +10,12 @@ describe('GamebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-                                     declarations: [GamebarComponent]
-                                   })
-           .compileComponents();
+      declarations: [GamebarComponent],
+      imports: [BrowserModule, HttpClientModule]
+    })
+      .compileComponents();
   }));
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GamebarComponent);

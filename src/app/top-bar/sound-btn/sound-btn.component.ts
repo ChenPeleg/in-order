@@ -5,7 +5,6 @@ import {SoundEffectService} from '../../services/soundEffect/sound-effect.servic
              selector: 'app-sound-btn',
              templateUrl: './sound-btn.component.html',
              styleUrls: ['./sound-btn.component.scss'],
-
            })
 export class SoundBtnComponent implements OnInit {
 
