@@ -43,7 +43,7 @@ export class SoundEffectService {
     ;
     const file = this.getSound(snd);
     let audio = new Audio();
-    audio.src = `../../../assets/audio/${file}.mp3`;
+    audio.src = `assets/audio/${file}.mp3`;
     audio.load();
     audio.play();
   }
